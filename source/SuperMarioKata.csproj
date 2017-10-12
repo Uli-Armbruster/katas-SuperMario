@@ -62,9 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IchBinSuperMario.cs" />
+    <Compile Include="Mario.cs" />
     <Compile Include="MarioSpecs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToterMario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
