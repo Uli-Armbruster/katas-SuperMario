@@ -15,16 +15,30 @@ namespace SuperMarioKata
         }
     }
 
-    public class Mario
+    // ReSharper disable once InconsistentNaming
+    public interface IchBinSuperMario
     {
-        public static Mario ToterMario()
+        IchBinSuperMario WirdVonGegnerGetroffen();
+    }
+
+    public class Mario : IchBinSuperMario
+    {
+        public static IchBinSuperMario ToterMario()
         {
-            return new Mario();
+            return new ToterMario();
         }
 
-        public Mario WirdVonGegnerGetroffen()
+        public IchBinSuperMario WirdVonGegnerGetroffen()
         {
-            throw new System.NotImplementedException();
+            return new ToterMario();
+        }
+    }
+
+    public class ToterMario : IchBinSuperMario
+    {
+        public IchBinSuperMario WirdVonGegnerGetroffen()
+        {
+            return this;
         }
     }
 }
