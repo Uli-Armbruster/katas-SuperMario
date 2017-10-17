@@ -4,6 +4,7 @@ Katas - Super Mario
 Hier zeige ich meinen [SOLID](https://de.wikipedia.org/wiki/Prinzipien_objektorientierten_Designs) Ansatz in C# anhand einer von mir erfundenen Kata für den sagenumwobenen Super Mario.
 Besonderen Fokus habe ich auf die Prinzipien der objektorientierten Programmierung gelegt. Viele Entwurfsmuster finden darin Anwendung.
 Ebenso geht es um grundsätzliche Entwicklungsansätze wie API First Design und Divide-and-Conquer.
+Die Commit History veröffentliche ich nicht, da diese Teil meiner Trainings ist.
 
 ### Iterationen
 
