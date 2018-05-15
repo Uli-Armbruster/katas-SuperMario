@@ -1,0 +1,4 @@
+﻿namespace SuperMarioRefactoring
+{
+  class SuperMario { }
+}
