@@ -12,11 +12,18 @@ namespace SuperMarioRefactoring
 
     private Status Status { get; set; }
     private int AnzahlLeben { get; set; }
+    private bool BesitztYoshi { get; set; }
 
     public void WirdVonGegnerGetroffen()
     {
       if (Status == Status.Tot)
         return;
+
+      if (BesitztYoshi)
+      {
+        BesitztYoshi = false;
+        return;
+      }
 
       if (Status == Status.MitFeuerblume)
       {
@@ -75,6 +82,11 @@ namespace SuperMarioRefactoring
         return;
 
       Status = Status.MitFeuerblume;
+    }
+
+    public void FindetYoshi()
+    {
+      BesitztYoshi = true;
     }
   }
 
