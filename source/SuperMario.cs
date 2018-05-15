@@ -46,6 +46,18 @@ namespace SuperMarioRefactoring
       throw new InvalidOperationException();
     }
 
+    public void FindetLeben()
+    {
+      if (Status != Status.Tot)
+      {
+        AnzahlLeben += 1;
+        return;
+      }
+
+      Status = Status.Klein;
+      AnzahlLeben = 0;
+    }
+
     public void FindetPilz()
     {
       if (Status == Status.Tot)
