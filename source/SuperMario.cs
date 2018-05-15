@@ -39,18 +39,22 @@ namespace SuperMarioRefactoring
 
       if (Status == Status.Klein)
       {
-        if (AnzahlLeben == 0)
-        {
-          Status = Status.Tot;
-          return;
-        }
-
-        AnzahlLeben -= 1;
-
+        VermindereLeben();
         return;
       }
 
       throw new InvalidOperationException();
+    }
+
+    private void VermindereLeben()
+    {
+      if (AnzahlLeben == 0)
+      {
+        Status = Status.Tot;
+        return;
+      }
+
+      AnzahlLeben -= 1;
     }
 
     public void FindetLeben()
@@ -87,6 +91,14 @@ namespace SuperMarioRefactoring
     public void FindetYoshi()
     {
       BesitztYoshi = true;
+    }
+
+    public void FälltInLoch()
+    {
+      BesitztYoshi = false;
+      Status = Status.Klein;
+
+      VermindereLeben();
     }
   }
 
