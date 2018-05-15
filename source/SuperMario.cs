@@ -10,9 +10,9 @@ namespace SuperMarioRefactoring
       AnzahlLeben = 3;
     }
 
-    private Status Status { get; set; }
-    private int AnzahlLeben { get; set; }
-    private bool BesitztYoshi { get; set; }
+    internal Status Status { get; private set; }
+    internal int AnzahlLeben { get; private set; }
+    internal bool BesitztYoshi { get; private set; }
 
     public void WirdVonGegnerGetroffen()
     {
