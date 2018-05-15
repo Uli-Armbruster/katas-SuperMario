@@ -6,16 +6,16 @@ namespace SuperMarioRefactoring
   {
     public SuperMario()
     {
-      IstTot = false;
       Status = Status.Klein;
+      AnzahlLeben = 3;
     }
 
-    public bool IstTot { get; private set; }
     private Status Status { get; set; }
+    private int AnzahlLeben { get; set; }
 
     public void WirdVonGegnerGetroffen()
     {
-      if (IstTot)
+      if (Status == Status.Tot)
         return;
 
       if (Status == Status.MitFeuerblume)
@@ -32,7 +32,14 @@ namespace SuperMarioRefactoring
 
       if (Status == Status.Klein)
       {
-        IstTot = true;
+        if (AnzahlLeben == 0)
+        {
+          Status = Status.Tot;
+          return;
+        }
+        //Ist das ein Fehler? Wie gestaltet sich die Fehlersuche?
+        AnzahlLeben -= 1;
+
         return;
       }
 
@@ -41,7 +48,7 @@ namespace SuperMarioRefactoring
 
     public void FindetPilz()
     {
-      if (IstTot)
+      if (Status == Status.Tot)
         return;
 
       if (Status == Status.MitFeuerblume)
@@ -52,7 +59,7 @@ namespace SuperMarioRefactoring
 
     public void FindetFeuerblume()
     {
-      if (IstTot)
+      if (Status == Status.Tot)
         return;
 
       Status = Status.MitFeuerblume;
@@ -61,6 +68,7 @@ namespace SuperMarioRefactoring
 
   internal enum Status
   {
+    Tot,
     Klein,
     MitPilz,
     MitFeuerblume
