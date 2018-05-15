@@ -12,11 +12,18 @@ namespace SuperMarioRefactoring
 
     private Status Status { get; set; }
     private int AnzahlLeben { get; set; }
+    private bool BesitztYoshi { get; set; }
 
     public void WirdVonGegnerGetroffen()
     {
       if (Status == Status.Tot)
         return;
+
+      if (BesitztYoshi)
+      {
+        BesitztYoshi = false;
+        return;
+      }
 
       if (Status == Status.MitFeuerblume)
       {
@@ -32,18 +39,22 @@ namespace SuperMarioRefactoring
 
       if (Status == Status.Klein)
       {
-        if (AnzahlLeben == 0)
-        {
-          Status = Status.Tot;
-          return;
-        }
-        //Ist das ein Fehler? Wie gestaltet sich die Fehlersuche?
-        AnzahlLeben -= 1;
-
+        VermindereLeben();
         return;
       }
 
       throw new InvalidOperationException();
+    }
+
+    private void VermindereLeben()
+    {
+      if (AnzahlLeben == 0)
+      {
+        Status = Status.Tot;
+        return;
+      }
+
+      AnzahlLeben -= 1;
     }
 
     public void FindetLeben()
@@ -75,6 +86,19 @@ namespace SuperMarioRefactoring
         return;
 
       Status = Status.MitFeuerblume;
+    }
+
+    public void FindetYoshi()
+    {
+      BesitztYoshi = true;
+    }
+
+    public void FälltInLoch()
+    {
+      BesitztYoshi = false;
+      Status = Status.Klein;
+
+      VermindereLeben();
     }
   }
 

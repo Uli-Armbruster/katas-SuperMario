@@ -43,6 +43,10 @@ Dieser Branch orientiert sich lose am Master-Branch und hat den Zweck Refactorin
 -	Wenn ein kleiner Mario mit Yoshi einen Pilz oder Blume findet, wächst er, behält aber seinen Yoshi bei.
 
 
+#### Iteration 5:
+-	Wenn Mario in ein Loch fällt, verliert er ein Leben und beginnt klein ohne Yoshi wieder.
+
+
 
 #### Kontakt
 1. [Blog](https://e.co-IT.eu/uli-armbruster/blog)
