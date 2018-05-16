@@ -60,6 +60,7 @@
     <Compile Include="KleinerMario.cs" />
     <Compile Include="MarioMitFeuerblume.cs" />
     <Compile Include="MarioMitPilz.cs" />
+    <Compile Include="MarioMitYoshi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specs.cs" />
