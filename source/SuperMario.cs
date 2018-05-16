@@ -9,14 +9,15 @@ namespace SuperMarioRefactoring
       new Dictionary<Status, Func<SuperMario>>();
 
     //API stabil halten
-    public SuperMario() : this(3)
+    public SuperMario() : this(3, Status.Klein)
     {
     }
 
     //Nicht öffentlich, um falsche Nutzung zu vermeiden
-    private SuperMario(int anzahlLeben)
+    //Vorteil durch öffentliche Factory-Methode: Keine Anpassung am Client notwendig
+    private SuperMario(int anzahlLeben, Status status)
     {
-      Status = Status.Klein;
+      Status = status;
       AnzahlLeben = anzahlLeben;
 
       ErzeugeStatusübergängeBeiTreffern();
@@ -24,29 +25,20 @@ namespace SuperMarioRefactoring
 
     private void ErzeugeStatusübergängeBeiTreffern()
     {
-      _representationen.Add(Status.Tot, () => this);
+      _representationen.Add(Status.Tot, 
+        () => new SuperMario(AnzahlLeben, Status.Tot));
 
-      _representationen.Add(Status.MitFeuerblume,
-        () =>
-        {
-          Status = Status.MitPilz;
-          return this;
-        });
-
+      _representationen.Add(Status.MitFeuerblume, 
+        () => new SuperMario(AnzahlLeben, Status.MitPilz));
 
       _representationen.Add(Status.MitPilz,
-        () =>
-        {
-          Status = Status.Klein;
-          return this;
-        });
-
+        () => new SuperMario(AnzahlLeben, Status.Klein));
 
       _representationen.Add(Status.Klein,
         () =>
         {
           VermindereLeben();
-          return this;
+          return new SuperMario(AnzahlLeben, Status);
         });
     }
 
@@ -57,7 +49,7 @@ namespace SuperMarioRefactoring
     //Factory-Pattern
     public static SuperMario StarteMitLeben(int anzahlLeben)
     {
-      return new SuperMario(anzahlLeben);
+      return new SuperMario(anzahlLeben, Status.Klein);
     }
 
     public SuperMario WirdVonGegnerGetroffen()
