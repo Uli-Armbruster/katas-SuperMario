@@ -11,7 +11,7 @@ namespace SuperMarioRefactoring
       //Properties müssen von außen zugreifbar sein
       //widerpsricht OOP
 
-      var mario = new SuperMario();
+      IchBinSuperMario mario = new SuperMario();
       mario.Status.Should().BeEquivalentTo(Status.Klein);
       mario.AnzahlLeben.Should().Be(3);
       mario.BesitztYoshi.Should().BeFalse();
@@ -25,7 +25,7 @@ namespace SuperMarioRefactoring
       //da Logik in der Methode sehr unübersichtlich ist
 
       //arrange
-      var mario = new SuperMario();
+      IchBinSuperMario mario = new SuperMario();
       mario.WirdVonGegnerGetroffen();
       mario.Status.Should().BeEquivalentTo(Status.Klein);
 
@@ -46,7 +46,7 @@ namespace SuperMarioRefactoring
       //Kann ich die API trotzdem konstant halten
 
       //arrange
-      var mario = SuperMario.StarteMitLeben(0);
+      IchBinSuperMario mario = SuperMario.StarteMitLeben(0);
 
       //act
       mario.WirdVonGegnerGetroffen();
@@ -62,7 +62,7 @@ namespace SuperMarioRefactoring
       //siehe unten
 
       //Achtung: Konsument musste geändert werden
-      var mario = new SuperMario()
+      IchBinSuperMario mario = new SuperMario()
       .FindetFeuerblume()
       .WirdVonGegnerGetroffen();
 
@@ -76,7 +76,7 @@ namespace SuperMarioRefactoring
     {
       //Anzahl Tests verdoppelt sich ggf. mit jeder neuen Anforderung
       //siehe oben
-      var mario = new SuperMario();
+      IchBinSuperMario mario = new SuperMario();
       mario.FindetFeuerblume();
       mario.FindetYoshi();
 
@@ -92,7 +92,7 @@ namespace SuperMarioRefactoring
     {
       //Anzahl Tests verdoppelt sich ggf. mit jeder neuen Anforderung
       //siehe oben
-      var mario = SuperMario
+      IchBinSuperMario mario = SuperMario
         .StarteMitLeben(3)
         .FindetFeuerblume()
         .FindetYoshi()
@@ -108,7 +108,7 @@ namespace SuperMarioRefactoring
     {
       //Test durchläuft mehrere Methoden
 
-      var mario = new SuperMario();
+      IchBinSuperMario mario = new SuperMario();
       mario.WirdVonGegnerGetroffen();
       mario.FindetFeuerblume();
       mario.FindetYoshi();
@@ -126,7 +126,7 @@ namespace SuperMarioRefactoring
       //wie prüfe ich, dass keine Aktionen mehr ausgeführt werden?
       //Debugging?
 
-      var mario = new SuperMario();
+      IchBinSuperMario mario = new SuperMario();
       mario.WirdVonGegnerGetroffen();
       mario.WirdVonGegnerGetroffen();
       mario.WirdVonGegnerGetroffen();

@@ -5,8 +5,8 @@ namespace SuperMarioRefactoring
 {
   public class SuperMario : IchBinSuperMario
   {
-    private readonly Dictionary<Status, Func<SuperMario>> _representationen =
-      new Dictionary<Status, Func<SuperMario>>();
+    private readonly Dictionary<Status, Func<IchBinSuperMario>> _representationen =
+      new Dictionary<Status, Func<IchBinSuperMario>>();
 
     //API stabil halten
     public SuperMario() : this(3, Status.Klein)
@@ -52,7 +52,7 @@ namespace SuperMarioRefactoring
       return new SuperMario(anzahlLeben, Status.Klein);
     }
 
-    public SuperMario WirdVonGegnerGetroffen()
+    public IchBinSuperMario WirdVonGegnerGetroffen()
     {
       if (BesitztYoshi)
       {
@@ -75,7 +75,7 @@ namespace SuperMarioRefactoring
       AnzahlLeben -= 1;
     }
 
-    public SuperMario FindetLeben()
+    public IchBinSuperMario FindetLeben()
     {
       if (Status != Status.Tot)
       {
@@ -89,7 +89,7 @@ namespace SuperMarioRefactoring
       return this;
     }
 
-    public SuperMario FindetPilz()
+    public IchBinSuperMario FindetPilz()
     {
       if (Status == Status.Tot)
         return this;
@@ -102,7 +102,7 @@ namespace SuperMarioRefactoring
       return this;
     }
 
-    public SuperMario FindetFeuerblume()
+    public IchBinSuperMario FindetFeuerblume()
     {
       if (Status == Status.Tot)
         return this;
@@ -112,13 +112,13 @@ namespace SuperMarioRefactoring
       return this;
     }
 
-    public SuperMario FindetYoshi()
+    public IchBinSuperMario FindetYoshi()
     {
       BesitztYoshi = true;
       return this;
     }
 
-    public SuperMario FälltInLoch()
+    public IchBinSuperMario FälltInLoch()
     {
       BesitztYoshi = false;
       Status = Status.Klein;
