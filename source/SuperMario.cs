@@ -4,10 +4,23 @@ namespace SuperMarioRefactoring
 {
   public class SuperMario
   {
-    public SuperMario()
+    //API stabil halten
+    public SuperMario():this(3)
+    {
+      
+    }
+
+    //Nicht öffentlich, um falsche Nutzung zu vermeiden
+    private SuperMario(int anzahlLeben)
     {
       Status = Status.Klein;
-      AnzahlLeben = 3;
+      AnzahlLeben = anzahlLeben;
+    }
+
+    //Factory-Pattern
+    public static SuperMario StarteMitLeben(int anzahlLeben)
+    {
+      return new SuperMario(anzahlLeben);
     }
 
     internal Status Status { get; private set; }
