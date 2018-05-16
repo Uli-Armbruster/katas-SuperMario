@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SuperMarioRefactoring
 {
-  public class SuperMario
+  public class SuperMario : IchBinSuperMario
   {
     private readonly Dictionary<Status, Func<SuperMario>> _representationen =
       new Dictionary<Status, Func<SuperMario>>();
@@ -42,9 +42,9 @@ namespace SuperMarioRefactoring
         });
     }
 
-    internal Status Status { get; private set; }
-    internal int AnzahlLeben { get; private set; }
-    internal bool BesitztYoshi { get; private set; }
+    public Status Status { get; private set; }
+    public int AnzahlLeben { get; private set; }
+    public bool BesitztYoshi { get; private set; }
 
     //Factory-Pattern
     public static SuperMario StarteMitLeben(int anzahlLeben)
@@ -128,7 +128,7 @@ namespace SuperMarioRefactoring
     }
   }
 
-  internal enum Status
+  public enum Status
   {
     Tot,
     Klein,
