@@ -7,7 +7,7 @@
       AnzahlLeben = anzahlLeben;
     }
 
-    public int AnzahlLeben { get; private set; }
+    public int AnzahlLeben { get; }
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
@@ -16,8 +16,7 @@
 
     public IchBinSuperMario FindetLeben()
     {
-      AnzahlLeben += 1;
-      return this;
+      return new MarioMitFeuerblume(AnzahlLeben + 1);
     }
 
     public IchBinSuperMario FindetPilz()
@@ -38,7 +37,6 @@
     public IchBinSuperMario FälltInLoch()
     {
       if (AnzahlLeben == 0) return new ToterMario();
-
       return new KleinerMario(AnzahlLeben - 1);
     }
   }

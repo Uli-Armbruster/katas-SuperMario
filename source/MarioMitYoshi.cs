@@ -4,12 +4,12 @@
   {
     private readonly IchBinSuperMario _reiter;
 
+    public int AnzahlLeben => _reiter.AnzahlLeben;
+
     public MarioMitYoshi(IchBinSuperMario reiter)
     {
       _reiter = reiter;
     }
-
-    public int AnzahlLeben => _reiter.AnzahlLeben;
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
@@ -18,20 +18,17 @@
 
     public IchBinSuperMario FindetLeben()
     {
-      _reiter.FindetLeben();
-      return this;
+      return new MarioMitYoshi(_reiter.FindetLeben());
     }
 
     public IchBinSuperMario FindetPilz()
     {
-      _reiter.FindetPilz();
-      return this;
+      return new MarioMitYoshi(_reiter.FindetPilz());
     }
 
     public IchBinSuperMario FindetFeuerblume()
     {
-      _reiter.FindetFeuerblume();
-      return this;
+      return new MarioMitYoshi(_reiter.FindetFeuerblume());
     }
 
     public IchBinSuperMario FindetYoshi()

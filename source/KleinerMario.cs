@@ -7,22 +7,19 @@
       AnzahlLeben = anzahlLeben;
     }
 
-    public int AnzahlLeben { get; private set; }
+    public int AnzahlLeben { get; }
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
       if (AnzahlLeben == 0)
         return new ToterMario();
 
-      AnzahlLeben -= 1;
-
-      return this;
+      return new KleinerMario(AnzahlLeben - 1);
     }
 
     public IchBinSuperMario FindetLeben()
     {
-      AnzahlLeben += 1;
-      return this;
+      return new KleinerMario(AnzahlLeben + 1);
     }
 
     public IchBinSuperMario FindetPilz()

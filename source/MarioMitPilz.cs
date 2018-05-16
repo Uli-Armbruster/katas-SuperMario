@@ -1,25 +1,22 @@
-﻿using System;
-
-namespace SuperMarioRefactoring
+﻿namespace SuperMarioRefactoring
 {
-  class MarioMitPilz : IchBinSuperMario
+  internal class MarioMitPilz : IchBinSuperMario
   {
-    public int AnzahlLeben { get; private set; }
-
     public MarioMitPilz(int anzahlLeben)
     {
       AnzahlLeben = anzahlLeben;
     }
 
+    public int AnzahlLeben { get; }
+
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
-     return new KleinerMario(AnzahlLeben);
-}
+      return new KleinerMario(AnzahlLeben);
+    }
 
     public IchBinSuperMario FindetLeben()
     {
-      AnzahlLeben += 1;
-      return this;
+      return new MarioMitPilz(AnzahlLeben + 1);
     }
 
     public IchBinSuperMario FindetPilz()
@@ -39,8 +36,8 @@ namespace SuperMarioRefactoring
 
     public IchBinSuperMario FälltInLoch()
     {
-        if (AnzahlLeben == 0) return new ToterMario();
-        return new KleinerMario(AnzahlLeben - 1);
+      if (AnzahlLeben == 0) return new ToterMario();
+      return new KleinerMario(AnzahlLeben - 1);
     }
   }
 }
