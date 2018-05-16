@@ -18,6 +18,36 @@ namespace SuperMarioRefactoring
     {
       Status = Status.Klein;
       AnzahlLeben = anzahlLeben;
+
+      ErzeugeStatusübergängeBeiTreffern();
+    }
+
+    private void ErzeugeStatusübergängeBeiTreffern()
+    {
+      _representationen.Add(Status.Tot, () => this);
+
+      _representationen.Add(Status.MitFeuerblume,
+        () =>
+        {
+          Status = Status.MitPilz;
+          return this;
+        });
+
+
+      _representationen.Add(Status.MitPilz,
+        () =>
+        {
+          Status = Status.Klein;
+          return this;
+        });
+
+
+      _representationen.Add(Status.Klein,
+        () =>
+        {
+          VermindereLeben();
+          return this;
+        });
     }
 
     internal Status Status { get; private set; }
@@ -39,52 +69,9 @@ namespace SuperMarioRefactoring
       }
 
 
-      _representationen.Add(Status.Tot, () => this);
-      if (Status == Status.Tot)
-        return this;
+      if (_representationen.ContainsKey(Status))
+        return _representationen[Status]();
 
-
-
-      _representationen.Add(Status.MitFeuerblume,
-        () =>
-        {
-          Status = Status.MitPilz;
-          return this;
-        });
-
-      if (Status == Status.MitFeuerblume)
-      {
-        Status = Status.MitPilz;
-        return this;
-      }
-
-
-      _representationen.Add(Status.MitPilz,
-        () =>
-        {
-          Status = Status.Klein;
-          return this;
-        });
-
-      if (Status == Status.MitPilz)
-      {
-        Status = Status.Klein;
-        return this;
-      }
-
-
-      _representationen.Add(Status.Klein,
-        () =>
-        {
-          VermindereLeben();
-          return this;
-        });
-
-      if (Status == Status.Klein)
-      {
-        VermindereLeben();
-        return this;
-      }
 
       throw new InvalidOperationException();
     }
