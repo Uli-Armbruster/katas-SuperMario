@@ -4,7 +4,6 @@
   {
     int AnzahlLeben { get; }
     bool BesitztYoshi { get; }
-    Status Status { get; }
 
     IchBinSuperMario WirdVonGegnerGetroffen();
     IchBinSuperMario FindetLeben();

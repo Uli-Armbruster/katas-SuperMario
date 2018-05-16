@@ -1,45 +1,57 @@
-﻿using System;
-
-namespace SuperMarioRefactoring
+﻿namespace SuperMarioRefactoring
 {
-  class KleinerMario : IchBinSuperMario
+  internal class KleinerMario : IchBinSuperMario
   {
     public KleinerMario(int anzahlLeben)
     {
       AnzahlLeben = anzahlLeben;
     }
 
-    public int AnzahlLeben { get; }
-    public bool BesitztYoshi { get; }
-    public Status Status { get; }
+    public int AnzahlLeben { get; private set; }
+    public bool BesitztYoshi { get; private set; }
+
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
-      throw new NotImplementedException();
+      if (BesitztYoshi)
+      {
+        BesitztYoshi = false;
+        return this;
+      }
+
+      if (AnzahlLeben == 0)
+        return new ToterMario();
+
+      AnzahlLeben -= 1;
+
+      return this;
     }
 
     public IchBinSuperMario FindetLeben()
     {
-      throw new NotImplementedException();
+      AnzahlLeben += 1;
+      return this;
     }
 
     public IchBinSuperMario FindetPilz()
     {
-      throw new NotImplementedException();
+      return new MarioMitPilz(AnzahlLeben);
     }
 
     public IchBinSuperMario FindetFeuerblume()
     {
-      throw new NotImplementedException();
+      return new MarioMitFeuerblume(AnzahlLeben);
     }
 
     public IchBinSuperMario FindetYoshi()
     {
-      throw new NotImplementedException();
+      BesitztYoshi = true;
+      return this;
     }
 
     public IchBinSuperMario FälltInLoch()
     {
-      throw new NotImplementedException();
+      if (AnzahlLeben == 0) return new ToterMario();
+      return new KleinerMario(AnzahlLeben - 1);
     }
   }
 }
