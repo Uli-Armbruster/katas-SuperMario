@@ -3,7 +3,6 @@
   public interface IchBinSuperMario
   {
     int AnzahlLeben { get; }
-    bool BesitztYoshi { get; }
 
     IchBinSuperMario WirdVonGegnerGetroffen();
     IchBinSuperMario FindetLeben();
