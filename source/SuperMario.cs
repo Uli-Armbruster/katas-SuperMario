@@ -26,13 +26,13 @@ namespace SuperMarioRefactoring
     private void ErzeugeStatusübergängeBeiTreffern()
     {
       _representationen.Add(Status.Tot, 
-        () => new SuperMario(AnzahlLeben, Status.Tot));
+        () => new ToterMario(AnzahlLeben));
 
       _representationen.Add(Status.MitFeuerblume, 
-        () => new SuperMario(AnzahlLeben, Status.MitPilz));
+        () => new MarioMitPilz(AnzahlLeben));
 
       _representationen.Add(Status.MitPilz,
-        () => new SuperMario(AnzahlLeben, Status.Klein));
+        () => new KleinerMario(AnzahlLeben));
 
       _representationen.Add(Status.Klein,
         () =>
