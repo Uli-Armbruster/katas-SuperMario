@@ -6,11 +6,11 @@
     bool BesitztYoshi { get; }
     Status Status { get; }
 
-    SuperMario WirdVonGegnerGetroffen();
-    SuperMario FindetLeben();
-    SuperMario FindetPilz();
-    SuperMario FindetFeuerblume();
-    SuperMario FindetYoshi();
-    SuperMario FälltInLoch();
+    IchBinSuperMario WirdVonGegnerGetroffen();
+    IchBinSuperMario FindetLeben();
+    IchBinSuperMario FindetPilz();
+    IchBinSuperMario FindetFeuerblume();
+    IchBinSuperMario FindetYoshi();
+    IchBinSuperMario FälltInLoch();
   }
 }
