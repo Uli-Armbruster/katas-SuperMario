@@ -39,6 +39,22 @@ namespace SuperMarioRefactoring
       //assert
       mario.Status.Should().BeEquivalentTo(Status.Tot);
     }
+
+    [Fact]
+    public void NEU_Kleiner_Mario_ohne_Leben_stirbt_und_ist_tot()
+    {
+      //API First: Wir würde ich es als Konsument gerne nutzen
+      //Kann ich die API trotzdem konstant halten
+
+      //arrange
+      var mario = SuperMario.StarteMitLeben(0);
+
+      //act
+      mario.WirdVonGegnerGetroffen();
+
+      //assert
+      mario.Status.Should().BeEquivalentTo(Status.Tot);
+    }
     
 
     [Fact]
