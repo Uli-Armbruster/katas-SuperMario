@@ -57,10 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IchBinSuperMario.cs" />
+    <Compile Include="KleinerMario.cs" />
+    <Compile Include="MarioMitFeuerblume.cs" />
+    <Compile Include="MarioMitPilz.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specs.cs" />
     <Compile Include="SuperMario.cs" />
+    <Compile Include="ToterMario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
