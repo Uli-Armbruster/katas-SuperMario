@@ -17,7 +17,6 @@ namespace SuperMarioRefactoring
       mario.BesitztYoshi.Should().BeFalse();
     }
 
-
     [Fact]
     public void Kleiner_Mario_ohne_Leben_stirbt_und_ist_tot()
     {
@@ -56,17 +55,16 @@ namespace SuperMarioRefactoring
       mario.Status.Should().BeEquivalentTo(Status.Tot);
     }
     
-
     [Fact]
     public void Mario_mit_Feuerblume_und_ohne_Yoshi_wird_vom_Gegner_getroffen_wird_zu_Mario_mit_Pilz()
     {
       //Anzahl Tests verdoppelt sich ggf. mit jeder neuen Anforderung
       //siehe unten
 
-      var mario = new SuperMario();
-      mario.FindetFeuerblume();
-
-      mario.WirdVonGegnerGetroffen();
+      //Achtung: Konsument musste geändert werden
+      var mario = new SuperMario()
+      .FindetFeuerblume()
+      .WirdVonGegnerGetroffen();
 
       mario.Status.Should().BeEquivalentTo(Status.MitPilz);
       mario.BesitztYoshi.Should().BeFalse();
@@ -105,7 +103,6 @@ namespace SuperMarioRefactoring
       mario.AnzahlLeben.Should().Be(3);
     }
    
-
     [Fact]
     public void FälltInLoch()
     {
