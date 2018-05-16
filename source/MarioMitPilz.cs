@@ -5,8 +5,6 @@ namespace SuperMarioRefactoring
   class MarioMitPilz : IchBinSuperMario
   {
     public int AnzahlLeben { get; private set; }
-    public bool BesitztYoshi { get; private set; }
-
 
     public MarioMitPilz(int anzahlLeben)
     {
@@ -15,12 +13,8 @@ namespace SuperMarioRefactoring
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
-      if (!BesitztYoshi)
-        return new KleinerMario(AnzahlLeben);
-
-      BesitztYoshi = false;
-      return this;
-    }
+     return new KleinerMario(AnzahlLeben);
+}
 
     public IchBinSuperMario FindetLeben()
     {
@@ -40,8 +34,7 @@ namespace SuperMarioRefactoring
 
     public IchBinSuperMario FindetYoshi()
     {
-      BesitztYoshi = true;
-      return this;
+      return new MarioMitYoshi(this);
     }
 
     public IchBinSuperMario FälltInLoch()

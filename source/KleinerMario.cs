@@ -8,16 +8,9 @@
     }
 
     public int AnzahlLeben { get; private set; }
-    public bool BesitztYoshi { get; private set; }
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
-      if (BesitztYoshi)
-      {
-        BesitztYoshi = false;
-        return this;
-      }
-
       if (AnzahlLeben == 0)
         return new ToterMario();
 
@@ -44,8 +37,7 @@
 
     public IchBinSuperMario FindetYoshi()
     {
-      BesitztYoshi = true;
-      return this;
+      return new MarioMitYoshi(this);
     }
 
     public IchBinSuperMario FälltInLoch()

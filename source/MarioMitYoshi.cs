@@ -1,17 +1,15 @@
 ﻿namespace SuperMarioRefactoring
 {
-  class MarioMitYoshi : IchBinSuperMario
+  internal class MarioMitYoshi : IchBinSuperMario
   {
     private readonly IchBinSuperMario _reiter;
 
-    public MarioMitYoshi(IchBinSuperMario reiter, int anzahlLeben)
+    public MarioMitYoshi(IchBinSuperMario reiter)
     {
-      AnzahlLeben = anzahlLeben;
       _reiter = reiter;
     }
 
-    public int AnzahlLeben { get; }
-    public bool BesitztYoshi { get; }
+    public int AnzahlLeben => _reiter.AnzahlLeben;
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {

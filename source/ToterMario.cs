@@ -1,14 +1,8 @@
-﻿using System;
-
-namespace SuperMarioRefactoring
+﻿namespace SuperMarioRefactoring
 {
-  class ToterMario : IchBinSuperMario {
+  internal class ToterMario : IchBinSuperMario
+  {
     public int AnzahlLeben { get; }
-    public bool BesitztYoshi { get; private set; }
-
-    public ToterMario()
-    {
-    }
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
@@ -32,7 +26,6 @@ namespace SuperMarioRefactoring
 
     public IchBinSuperMario FindetYoshi()
     {
-      BesitztYoshi = true;
       return this;
     }
 
