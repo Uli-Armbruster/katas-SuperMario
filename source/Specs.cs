@@ -88,6 +88,22 @@ namespace SuperMarioRefactoring
       mario.BesitztYoshi.Should().BeFalse();
       mario.AnzahlLeben.Should().Be(3);
     }
+
+    [Fact]
+    public void NEU_Mario_mit_Feuerblume_und_mit_Yoshi_wird_vom_Gegner_getroffen_behält_Feuerblumde()
+    {
+      //Anzahl Tests verdoppelt sich ggf. mit jeder neuen Anforderung
+      //siehe oben
+      var mario = SuperMario
+        .StarteMitLeben(3)
+        .FindetFeuerblume()
+        .FindetYoshi()
+        .WirdVonGegnerGetroffen();
+
+      mario.Status.Should().BeEquivalentTo(Status.MitFeuerblume);
+      mario.BesitztYoshi.Should().BeFalse();
+      mario.AnzahlLeben.Should().Be(3);
+    }
    
 
     [Fact]
