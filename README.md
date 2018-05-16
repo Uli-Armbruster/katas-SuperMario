@@ -7,7 +7,7 @@ Ebenso geht es um grundsätzliche Entwicklungsansätze wie API First Design und 
 
 ==================
 ## Branch: RefactoringTechniken
-Dieser Branch orientiert sich lose am Master-Branch und hat den Zweck Refactoring Techniken einzuüben. Dazu wuren Anforderungen gegenüber der originären Kata geändert und der Code anders aufgebaut.
+Dieser Branch orientiert sich lose am Master-Branch und hat den Zweck Refactoring Techniken einzuüben. Dazu wurden Anforderungen gegenüber der originären Kata geändert und der Code anders aufgebaut.
 
 ==================
 
