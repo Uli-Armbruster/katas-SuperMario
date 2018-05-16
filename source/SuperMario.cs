@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SuperMarioRefactoring
 {
   public class SuperMario
   {
+    private readonly Dictionary<Status, Func<SuperMario>> _representationen =
+      new Dictionary<Status, Func<SuperMario>>();
+
     //API stabil halten
-    public SuperMario():this(3)
+    public SuperMario() : this(3)
     {
-      
     }
 
     //Nicht öffentlich, um falsche Nutzung zu vermeiden
@@ -17,26 +20,37 @@ namespace SuperMarioRefactoring
       AnzahlLeben = anzahlLeben;
     }
 
+    internal Status Status { get; private set; }
+    internal int AnzahlLeben { get; private set; }
+    internal bool BesitztYoshi { get; private set; }
+
     //Factory-Pattern
     public static SuperMario StarteMitLeben(int anzahlLeben)
     {
       return new SuperMario(anzahlLeben);
     }
 
-    internal Status Status { get; private set; }
-    internal int AnzahlLeben { get; private set; }
-    internal bool BesitztYoshi { get; private set; }
-
     public SuperMario WirdVonGegnerGetroffen()
     {
-      if (Status == Status.Tot)
-        return this;
-
       if (BesitztYoshi)
       {
         BesitztYoshi = false;
         return this;
       }
+
+
+      _representationen.Add(Status.Tot, () => this);
+      if (Status == Status.Tot)
+        return this;
+
+
+
+      _representationen.Add(Status.MitFeuerblume,
+        () =>
+        {
+          Status = Status.MitPilz;
+          return this;
+        });
 
       if (Status == Status.MitFeuerblume)
       {
@@ -44,11 +58,27 @@ namespace SuperMarioRefactoring
         return this;
       }
 
+
+      _representationen.Add(Status.MitPilz,
+        () =>
+        {
+          Status = Status.Klein;
+          return this;
+        });
+
       if (Status == Status.MitPilz)
       {
         Status = Status.Klein;
         return this;
       }
+
+
+      _representationen.Add(Status.Klein,
+        () =>
+        {
+          VermindereLeben();
+          return this;
+        });
 
       if (Status == Status.Klein)
       {
@@ -61,10 +91,7 @@ namespace SuperMarioRefactoring
 
     private void VermindereLeben()
     {
-      if (AnzahlLeben == 0)
-      {
-        Status = Status.Tot;
-      }
+      if (AnzahlLeben == 0) Status = Status.Tot;
 
       AnzahlLeben -= 1;
     }
