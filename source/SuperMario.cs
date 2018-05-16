@@ -27,33 +27,33 @@ namespace SuperMarioRefactoring
     internal int AnzahlLeben { get; private set; }
     internal bool BesitztYoshi { get; private set; }
 
-    public void WirdVonGegnerGetroffen()
+    public SuperMario WirdVonGegnerGetroffen()
     {
       if (Status == Status.Tot)
-        return;
+        return this;
 
       if (BesitztYoshi)
       {
         BesitztYoshi = false;
-        return;
+        return this;
       }
 
       if (Status == Status.MitFeuerblume)
       {
         Status = Status.MitPilz;
-        return;
+        return this;
       }
 
       if (Status == Status.MitPilz)
       {
         Status = Status.Klein;
-        return;
+        return this;
       }
 
       if (Status == Status.Klein)
       {
         VermindereLeben();
-        return;
+        return this;
       }
 
       throw new InvalidOperationException();
@@ -64,54 +64,61 @@ namespace SuperMarioRefactoring
       if (AnzahlLeben == 0)
       {
         Status = Status.Tot;
-        return;
       }
 
       AnzahlLeben -= 1;
     }
 
-    public void FindetLeben()
+    public SuperMario FindetLeben()
     {
       if (Status != Status.Tot)
       {
         AnzahlLeben += 1;
-        return;
+        return this;
       }
 
       Status = Status.Klein;
       AnzahlLeben = 0;
+
+      return this;
     }
 
-    public void FindetPilz()
+    public SuperMario FindetPilz()
     {
       if (Status == Status.Tot)
-        return;
+        return this;
 
       if (Status == Status.MitFeuerblume)
-        return;
+        return this;
 
       Status = Status.MitPilz;
+
+      return this;
     }
 
-    public void FindetFeuerblume()
+    public SuperMario FindetFeuerblume()
     {
       if (Status == Status.Tot)
-        return;
+        return this;
 
       Status = Status.MitFeuerblume;
+
+      return this;
     }
 
-    public void FindetYoshi()
+    public SuperMario FindetYoshi()
     {
       BesitztYoshi = true;
+      return this;
     }
 
-    public void FälltInLoch()
+    public SuperMario FälltInLoch()
     {
       BesitztYoshi = false;
       Status = Status.Klein;
 
       VermindereLeben();
+      return this;
     }
   }
 
