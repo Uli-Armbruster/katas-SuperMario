@@ -4,42 +4,41 @@ namespace SuperMarioRefactoring
 {
   class ToterMario : IchBinSuperMario {
     public int AnzahlLeben { get; }
-    public bool BesitztYoshi { get; }
-    public Status Status { get; }
+    public bool BesitztYoshi { get; private set; }
 
-    public ToterMario(int anzahlLeben)
+    public ToterMario()
     {
-      AnzahlLeben = anzahlLeben;
     }
 
     public IchBinSuperMario WirdVonGegnerGetroffen()
     {
-      throw new NotImplementedException();
+      return this;
     }
 
     public IchBinSuperMario FindetLeben()
     {
-      throw new NotImplementedException();
+      return new KleinerMario(0);
     }
 
     public IchBinSuperMario FindetPilz()
     {
-      throw new NotImplementedException();
+      return this;
     }
 
     public IchBinSuperMario FindetFeuerblume()
     {
-      throw new NotImplementedException();
+      return this;
     }
 
     public IchBinSuperMario FindetYoshi()
     {
-      throw new NotImplementedException();
+      BesitztYoshi = true;
+      return this;
     }
 
     public IchBinSuperMario FälltInLoch()
     {
-      throw new NotImplementedException();
+      return this;
     }
   }
 }
