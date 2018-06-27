@@ -59,11 +59,13 @@
     <Compile Include="Iteration1\SuperMario.cs" />
     <Compile Include="Iteration2\SuperMario.cs" />
     <Compile Include="Iteration3\SuperMario.cs" />
+    <Compile Include="Iteration4\SuperMario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Iteration4\README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
