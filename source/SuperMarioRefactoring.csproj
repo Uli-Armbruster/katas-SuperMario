@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Iteration1\SuperMario.cs" />
     <Compile Include="Iteration2\SuperMario.cs" />
+    <Compile Include="Iteration3\SuperMario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
