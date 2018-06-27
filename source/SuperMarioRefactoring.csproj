@@ -66,8 +66,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Refactoring02\SuperMario.cs" />
     <Compile Include="Refactoring01\SuperMario.cs" />
+    <Compile Include="Refactoring06\IchBinSuperMario.cs" />
+    <Compile Include="Refactoring06\KleinerMario.cs" />
+    <Compile Include="Refactoring06\MarioMitFeuerblume.cs" />
+    <Compile Include="Refactoring06\MarioMitPilz.cs" />
+    <Compile Include="Refactoring06\Status.cs" />
+    <Compile Include="Refactoring06\SuperMario.cs" />
+    <Compile Include="Refactoring05\SuperMario.cs" />
     <Compile Include="Refactoring04\SuperMario.cs" />
     <Compile Include="Refactoring03\SuperMario.cs" />
+    <Compile Include="Refactoring06\SuperMarioSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
