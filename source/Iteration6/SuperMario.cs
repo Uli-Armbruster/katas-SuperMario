@@ -162,8 +162,7 @@ namespace SuperMarioRefactoring.Iteration6
       {
         case Status.Klein:
         {
-          Leben -= 1;
-          return Leben > 0 ? this : null;
+          return VermindereLeben();
         }
         case Status.MitFeuerblume:
           Status = Status.MitPilz;
@@ -203,8 +202,13 @@ namespace SuperMarioRefactoring.Iteration6
     {
       ReitetYoshi = false;
       Status = Status.Klein;
-      Leben -= 1;
 
+      return VermindereLeben();
+    }
+
+    private SuperMario VermindereLeben()
+    {
+      Leben -= 1;
       return Leben > 0 ? this : null;
     }
   }
