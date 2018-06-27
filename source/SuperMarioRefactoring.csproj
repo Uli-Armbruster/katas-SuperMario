@@ -60,6 +60,7 @@
     <Compile Include="Iteration2\SuperMario.cs" />
     <Compile Include="Iteration3\SuperMario.cs" />
     <Compile Include="Iteration4\SuperMario.cs" />
+    <Compile Include="Iteration6\SuperMario.cs" />
     <Compile Include="Iteration5\SuperMario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
